@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Quiz</title>
-    <link rel="stylesheet" href="/assets/style.css"/>
+    <link rel="stylesheet" href="./assets/style.css" />
 </head>
+
 <body>
-    
-    
+    <header id="timer">
+        <p>View high scores</p>
+        <p>Time Left: <span id="time-left">60</span></p> 
+    </header>
+
+    <div>
+        <h1>Coding Quiz Challenge</h1>
+        <p>Answer the following questions within the time limit seen in the right hand corner.</p>
+        <p>Note that incorrect answers will dock your score/time by ten seconds!</p>
+        <button type="button" id="start-btn">Start Quiz</button>
+    </div>
+
+    <div id="question-choices" style="display:none">
+        <h2 id="question">To combine a message with a variable is called a: </h2>
+        <ol>
+            <li><button id="btn1">contcatenation</button></li>
+            <li><button id="btn2">boolean</button></li>
+            <li><button id="btn3">string</button></li>
+            <li><button id="btn4">array</button></li>
+        </ol>
+        <hr id="line-break" style="display: none;">
+        <p id="answer" style="display: none;"></p>
+    </div>
+
+    <div id="all-done" style="display:none">
+        <h2>ALL DONE!</h2>
+        <p>Your final score is: <span id="final-score"></span></p>
+        <form action="/action_page.php">
+            <label for="initials">Enter Initials: </label>
+            <input type="text" id="intials" name="intials"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="high-scores" style="display:none">
+        <h2>High Scores</h2>
+        <p><span id="score-results"></span></p>
+        <button type="button" id="back-btn">Go back</button>
+        <button type="button" id="clear-btn">Clear high scores</button>
+    </div>
+<script src="./assets/script.js"></script>
 </body>
+
 </html>

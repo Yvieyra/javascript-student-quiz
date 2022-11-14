@@ -1,0 +1,29 @@
+#timer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+#start-btn {
+    background-color: purple;
+    color: white;
+    padding: 20px;
+}
+
+#back-btn {
+    background-color: purple;
+    color: white;
+}
+
+#clear-btn {
+    background-color: purple;
+    color: white;
+}
