@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <header id="timer">
-        <p>View high scores</p>
-        <p>Time Left: <span id="time-left">60</span></p> 
+    <header>
+        <p><a href=#high-scores>View high scores</a></p>
+        <p>Time Left: <span id="time-left"></span></p> 
     </header>
 
     <div>
@@ -22,19 +22,19 @@
         <button type="button" id="start-btn">Start Quiz</button>
     </div>
 
-    <div id="question-choices" style="display:none">
-        <h2 id="question">To combine a message with a variable is called a: </h2>
+    <div id="question-choices">
+        <h2 id="question">questions.question1</h2>
         <ol>
-            <li><button id="btn1">contcatenation</button></li>
-            <li><button id="btn2">boolean</button></li>
-            <li><button id="btn3">string</button></li>
-            <li><button id="btn4">array</button></li>
+            <li><button class="button-choice" id="btn1">questions.choices1</button></li>
+            <li><button class="button-choice" id="btn2"></button></li>
+            <li><button class="button-choice" id="btn3"></button></li>
+            <li><button class="button-choice" id="btn4"></button></li>
         </ol>
         <hr id="line-break" style="display: none;">
-        <p id="answer" style="display: none;"></p>
+        <p id="answer" style="display: none;">questions.answer1</p>
     </div>
 
-    <div id="all-done" style="display:none">
+    <div id="all-done">
         <h2>ALL DONE!</h2>
         <p>Your final score is: <span id="final-score"></span></p>
         <form action="/action_page.php">
@@ -44,7 +44,7 @@
         </form>
     </div>
 
-    <div id="high-scores" style="display:none">
+    <div id="high-scores">
         <h2>High Scores</h2>
         <p><span id="score-results"></span></p>
         <button type="button" id="back-btn">Go back</button>
