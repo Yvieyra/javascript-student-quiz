@@ -3,13 +3,13 @@ var buttonChoice = document.querySelector(".button-choice")
 
 var startButton = document.querySelector("#start-btn");
 
-var questionChoices = document.querySelector("question-choices")
+var questionChoices = document.querySelector("#question-choices")
 var questionHeader = document.querySelector("#question-header")
+var choicelist = document.querySelector("#choice-list")
 var button1 = document.querySelector("#btn1")
 var button2 = document.querySelector("#btn2")
 var button3 = document.querySelector("#btn3")
 var button4 = document.querySelector("#btn4")
-var lineBreak = document.querySelector("#line-break")
 var answer = document.querySelector("#answer")
 
 var allDone = document.querySelector("#all-done")
@@ -22,6 +22,8 @@ var highestScore = document.querySelector("#score-results")
 var backButton = document.querySelector("#back-btn")
 var clearButton = document.querySelector("#clear-btn")
 
+var wrongAnswers = 0;
+var correctAnswers = 0;
 var timerInterval;
 var secondsLeft = 60;
 
@@ -31,7 +33,7 @@ var secondsLeft = 60;
 
 // }
 
-function countDown() {
+function startQuiz() {
     timerInterval = setInterval(function () {
         secondsLeft--;
         timeLeft.textContent = secondsLeft;
@@ -54,58 +56,57 @@ function countDown() {
 
 
 //eventlisteners
-startButton.addEventListener("click", countDown);//starts time at beginning of test and populates first question sets
-//eventlistener function
-function nextQuestion() { // is a next question necessary?}
-    if (questions[0].answer) {
+startButton.addEventListener("click", startQuiz);//starts time at beginning of test and populates first question sets
+//eventlistener function to check correct answers vs. wrong answers
+function selectAnswer() {
+   if(buttonChoice===questions[0].answer) {
         answer.textContent = ("correct!");
     
 }}
 
-buttonChoice.addEventListener("click", nextQuestion);// user selects questions choice and function should move to next questiion and give correct answer
+buttonChoice.addEventListener("click", selectAnswer);// user selects answer, and shoudl receive a right or wrong text at the bottom. 
 
 
 function starterQuestion() {
+    startButton.disabled = true; 
+    choicelist.style.display ="block";
     questionHeader.textContent = questions[0].question;
     button1.textContent = questions[0].choices[0];
     button2.textContent = questions[0].choices[1];
     button3.textContent = questions[0].choices[2];
-    button4.textContent = questions[0].choices[3];
-    
+    button4.textContent = questions[0].choices[3];  
 }
 
-// //get stored values for high scores
+//get stored values for high scores
 
-//add questions and choices with answers in jS (An array of Objects)
-// one object per question in one big array
+//questions and choices with answers in an array of objects
 var questions = [
 
     {
         question: "To combine a message with a variable is called a: ",
         choices: ["boolean", "concatenation", "string", "array"],
-        answer: "concatenation"
+        answer: "concatenation",
     },
     {
         question: "A string is a series of characters and is surrounded by:  ",
         choices: ["p tags", "brackets", "quotes", "parenthesis"],
-        answer: "quotes"
+        answer: "quotes",
     },
     {
         question: "The logical comparison operator modulus(%) is used for what?",
         choices: ["percentage", "It returns the remainder between two numbers", "average", "reverses boolean value"],
-        answer: "It returns the remainder between two numbers"
+        answer: "It returns the remainder between two numbers",
     },
     {
         question: "What does the following method do? .push()",
         choices: ["inserts the parameter onto the end of an array and returns the new array order", "It re-assigns the array value to the only parameter value", "inserts the parameter to the start of an array and returns the new array order", "It returns the value of the parameter inside the push parenthessis if it exists in the array"
         ],
-        answer: "inserts the parameter onto the end of an array and returns the new array order"
+        answer: "inserts the parameter onto the end of an array and returns the new array order",
     },
     {
         question: "Why do we use for-loops?",
         choices: ["to code quicker", "to execute a code more than once", "to find false statements", "to find true statements"],
-        answer: "It execute a code more than once"
+        answer: "It execute a code more than once",
     }
 ]
 
-// Tests to check correct answers vs. wrong answers
