@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header>
+    <header id="timer">
         <p><a href=#high-scores>View high scores</a></p>
         <p>Time Left: <span id="time-left"></span></p> 
     </header>
@@ -23,18 +23,18 @@
     </div>
 
     <div id="question-choices">
-        <h2 id="question">questions.question1</h2>
+        <h2 id="question-header"></h2>
         <ol>
-            <li><button class="button-choice" id="btn1">questions.choices1</button></li>
+            <li><button class="button-choice" id="btn1"></button></li>
             <li><button class="button-choice" id="btn2"></button></li>
             <li><button class="button-choice" id="btn3"></button></li>
             <li><button class="button-choice" id="btn4"></button></li>
         </ol>
         <hr id="line-break" style="display: none;">
-        <p id="answer" style="display: none;">questions.answer1</p>
+        <p id="answer"></p>
     </div>
 
-    <div id="all-done">
+    <div id="all-done" style="display: none;">
         <h2>ALL DONE!</h2>
         <p>Your final score is: <span id="final-score"></span></p>
         <form action="/action_page.php">
@@ -44,7 +44,7 @@
         </form>
     </div>
 
-    <div id="high-scores">
+    <div id="high-scores" style="display: none;">
         <h2>High Scores</h2>
         <p><span id="score-results"></span></p>
         <button type="button" id="back-btn">Go back</button>
