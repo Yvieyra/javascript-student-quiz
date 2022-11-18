@@ -12,7 +12,7 @@
 <body>
     <header id="timer">
         <p><a href=#high-scores>View high scores</a></p>
-        <p>Time Left: <span id="time-left"></span></p> 
+        <p>Time Left: <span id="time-left"></span></p>
     </header>
 
     <div>
@@ -33,8 +33,9 @@
         <p id="answer"></p>
     </div>
 
-    <div id="all-done" style="display: none;">
-        <h2>ALL DONE!</h2>
+    <!-- hide div once it works properly -->
+    <div id="all-done">
+        <h3>ALL DONE!</h3>
         <p>Your final score is: <span id="final-score"></span></p>
         <form action="/action_page.php">
             <label for="initials">Enter Initials: </label>
@@ -43,13 +44,14 @@
         </form>
     </div>
 
-    <div id="high-scores" style="display: none;">
-        <h2>High Scores</h2>
+    <!-- hide div once it works properly -->
+    <div id="high-scores">
+        <h3>High Scores</h3>
         <p><span id="score-results"></span></p>
         <button type="button" id="back-btn">Go back</button>
         <button type="button" id="clear-btn">Clear high scores</button>
     </div>
-<script src="./assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>

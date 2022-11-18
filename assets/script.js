@@ -4,7 +4,7 @@ var buttonChoice = document.querySelectorAll(".button-choice")
 var startButton = document.querySelector("#start-btn");
 
 var questionHeader = document.querySelector("#question-header")
-var choicelist = document.querySelector("#choice-list")
+var choiceList = document.querySelector("#choice-list")
 var button1 = document.querySelector("#btn1")
 var button2 = document.querySelector("#btn2")
 var button3 = document.querySelector("#btn3")
@@ -47,7 +47,7 @@ function startQuiz() {
         }
     }, 1000);
 
-    starterQuestion();
+    nextQuestion();
 
 }
 
@@ -56,19 +56,26 @@ startButton.addEventListener("click", startQuiz);//starts time at beginning of t
 
 // //eventlistener function to check correct answers vs. wrong answers
 function selectAnswer(event) {
-    console.log(event.target.textContent);
-// if (buttonChoice===questions[0].answer) {
-//     answer.textContent = ('correct!')
- console.log(buttonChoice, "buttonChoice");
+    if (event.target.textContent == questions[currentQuestion].answer) { // console.log(event.target.textContent);
+        answer.textContent = ('correct!');
+        score++;
+        console.log(score);
+    } else if (event.target.textContent !== questions[currentQuestion].answer) {
+        answer.textContent = ('Wrong!');
+        console.log("Wrong!");
+        score--;
+        console.log(score);
+    }
+    nextQuestion(currentQuestion++);
+
 }
 
+choiceList.addEventListener("click", selectAnswer);// user selects answer, and shoudl receive a right or wrong text at the bottom. 
 
-choicelist.addEventListener("click", selectAnswer);// user selects answer, and shoudl receive a right or wrong text at the bottom. 
 
-
-function starterQuestion() {
+function nextQuestion() {
     startButton.disabled = true;
-    choicelist.style.display = "block";
+    choiceList.style.display = "block";
     questionHeader.textContent = questions[currentQuestion].question;
     button1.textContent = questions[currentQuestion].choices[0];
     button2.textContent = questions[currentQuestion].choices[1];
@@ -105,7 +112,7 @@ var questions = [
     {
         question: "Why do we use for-loops?",
         choices: ["to code quicker", "to execute a code more than once", "to find false statements", "to find true statements"],
-        answer: "It execute a code more than once",
+        answer: "to execute a code more than once",
     }
 ]
 

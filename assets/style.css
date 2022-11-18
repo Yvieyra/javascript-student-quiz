@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    padding: 15px;
+    font-weight: bold;
 }
 
 div {
@@ -9,7 +11,7 @@ div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #start-btn {
@@ -30,4 +32,11 @@ div {
 .button-choice {
     background-color: purple;
     color: white;
+}
+
+#all-done {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
 }
