@@ -1,9 +1,8 @@
 var timeLeft = document.querySelector("#time-left")
-var buttonChoice = document.querySelector(".button-choice")
+var buttonChoice = document.querySelectorAll(".button-choice")
 
 var startButton = document.querySelector("#start-btn");
 
-var questionChoices = document.querySelector("#question-choices")
 var questionHeader = document.querySelector("#question-header")
 var choicelist = document.querySelector("#choice-list")
 var button1 = document.querySelector("#btn1")
@@ -22,16 +21,14 @@ var highestScore = document.querySelector("#score-results")
 var backButton = document.querySelector("#back-btn")
 var clearButton = document.querySelector("#clear-btn")
 
-var wrongAnswers = 0;
-var correctAnswers = 0;
+var currentQuestion = 0;
+var score = 0;
 var timerInterval;
 var secondsLeft = 60;
 
 
 //for loop to insert object properties into HTML
-// for (var i = 0; i < questions.length; i++) {
-
-// }
+// 
 
 function startQuiz() {
     timerInterval = setInterval(function () {
@@ -54,27 +51,29 @@ function startQuiz() {
 
 }
 
-
 //eventlisteners
 startButton.addEventListener("click", startQuiz);//starts time at beginning of test and populates first question sets
-//eventlistener function to check correct answers vs. wrong answers
-function selectAnswer() {
-   if(buttonChoice===questions[0].answer) {
-        answer.textContent = ("correct!");
-    
-}}
 
-buttonChoice.addEventListener("click", selectAnswer);// user selects answer, and shoudl receive a right or wrong text at the bottom. 
+// //eventlistener function to check correct answers vs. wrong answers
+function selectAnswer(event) {
+    console.log(event.target.textContent);
+// if (buttonChoice===questions[0].answer) {
+//     answer.textContent = ('correct!')
+ console.log(buttonChoice, "buttonChoice");
+}
+
+
+choicelist.addEventListener("click", selectAnswer);// user selects answer, and shoudl receive a right or wrong text at the bottom. 
 
 
 function starterQuestion() {
-    startButton.disabled = true; 
-    choicelist.style.display ="block";
-    questionHeader.textContent = questions[0].question;
-    button1.textContent = questions[0].choices[0];
-    button2.textContent = questions[0].choices[1];
-    button3.textContent = questions[0].choices[2];
-    button4.textContent = questions[0].choices[3];  
+    startButton.disabled = true;
+    choicelist.style.display = "block";
+    questionHeader.textContent = questions[currentQuestion].question;
+    button1.textContent = questions[currentQuestion].choices[0];
+    button2.textContent = questions[currentQuestion].choices[1];
+    button3.textContent = questions[currentQuestion].choices[2];
+    button4.textContent = questions[currentQuestion].choices[3];
 }
 
 //get stored values for high scores
@@ -110,3 +109,8 @@ var questions = [
     }
 ]
 
+//function checkAnswer() {
+
+// var projectName = projectNameInputEl.val().trim();
+    // var projectType = projectTypeInputEl.val(); // don't need to trim select input
+    // var projectDate = projectDateInputEl.val();
