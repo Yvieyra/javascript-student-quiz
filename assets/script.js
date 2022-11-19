@@ -13,10 +13,11 @@ var answer = document.querySelector("#answer")
 
 var allDone = document.querySelector("#all-done")
 var finalScore = document.querySelector("#final-score")
-var initialsInput = document.querySelector("#intials")
+var initials = document.querySelector("#intials")
+var submitButton = document.querySelector("#submit-button")
 
 var highScores = document.querySelector("#high-scores")
-var highestScore = document.querySelector("#score-results")
+var scoreResults = document.querySelector("#score-results")
 
 var backButton = document.querySelector("#back-btn")
 var clearButton = document.querySelector("#clear-btn")
@@ -26,9 +27,6 @@ var score = 0;
 var timerInterval;
 var secondsLeft = 60;
 
-
-//for loop to insert object properties into HTML
-// 
 
 function startQuiz() {
     timerInterval = setInterval(function () {
@@ -58,6 +56,7 @@ startButton.addEventListener("click", startQuiz);//starts time at beginning of t
 function selectAnswer(event) {
     if (event.target.textContent == questions[currentQuestion].answer) { // console.log(event.target.textContent);
         answer.textContent = ('correct!');
+        console.log("Correct!");
         score++;
         console.log(score);
     } else if (event.target.textContent !== questions[currentQuestion].answer) {
@@ -67,7 +66,13 @@ function selectAnswer(event) {
         console.log(score);
     }
     nextQuestion(currentQuestion++);
-
+    if (questions[currentQuestion].question == questions[4].question) {
+        allDone.style.display = "flex";
+        // Set Item
+    localStorage.setItem("score", score);
+    // Retrieve
+    finalScore.textContent = localStorage.getItem("score");
+    }
 }
 
 choiceList.addEventListener("click", selectAnswer);// user selects answer, and shoudl receive a right or wrong text at the bottom. 
@@ -75,15 +80,13 @@ choiceList.addEventListener("click", selectAnswer);// user selects answer, and s
 
 function nextQuestion() {
     startButton.disabled = true;
-    choiceList.style.display = "block";
+    choiceList.style.display = "flex";
     questionHeader.textContent = questions[currentQuestion].question;
     button1.textContent = questions[currentQuestion].choices[0];
     button2.textContent = questions[currentQuestion].choices[1];
     button3.textContent = questions[currentQuestion].choices[2];
     button4.textContent = questions[currentQuestion].choices[3];
 }
-
-//get stored values for high scores
 
 //questions and choices with answers in an array of objects
 var questions = [
@@ -116,8 +119,15 @@ var questions = [
     }
 ]
 
-//function checkAnswer() {
+//get stored values for high scores
+function renderInitials() {
+       // Set Item
+       localStorage.setItem("initials", initials);
+       // Retrieve
+       scoreResults.textContent = localStorage.getItem("initials")
+}
 
+submitButton.addEventListener("click", renderInitials)
 // var projectName = projectNameInputEl.val().trim();
     // var projectType = projectTypeInputEl.val(); // don't need to trim select input
     // var projectDate = projectDateInputEl.val();
