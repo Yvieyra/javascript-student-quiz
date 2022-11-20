@@ -11,10 +11,10 @@ var button3 = document.querySelector("#btn3")
 var button4 = document.querySelector("#btn4")
 var answer = document.querySelector("#answer")
 
+var myForm = document.querySelector("#my-form")
 var allDone = document.querySelector("#all-done")
 var finalScore = document.querySelector("#final-score")
 var initials = document.querySelector("#intials")
-var submitButton = document.querySelector("#submit-button")
 
 var highScores = document.querySelector("#high-scores")
 var scoreResults = document.querySelector("#score-results")
@@ -56,14 +56,10 @@ startButton.addEventListener("click", startQuiz);//starts time at beginning of t
 function selectAnswer(event) {
     if (event.target.textContent == questions[currentQuestion].answer) { // console.log(event.target.textContent);
         answer.textContent = ('correct!');
-        console.log("Correct!");
         score++;
-        console.log(score);
     } else if (event.target.textContent !== questions[currentQuestion].answer) {
         answer.textContent = ('Wrong!');
-        console.log("Wrong!");
         score--;
-        console.log(score);
     }
     nextQuestion(currentQuestion++);
     if (questions[currentQuestion].question == questions[4].question) {
@@ -87,6 +83,16 @@ function nextQuestion() {
     button3.textContent = questions[currentQuestion].choices[2];
     button4.textContent = questions[currentQuestion].choices[3];
 }
+
+//get stored values for high scores
+function renderInitials() {
+    // Set Item
+    localStorage.setItem("initials", initials);
+    // Retrieve
+    scoreResults.textContent = localStorage.getItem("initials")
+}
+
+myForm.addEventListener("submit", renderInitials);
 
 //questions and choices with answers in an array of objects
 var questions = [
@@ -119,15 +125,6 @@ var questions = [
     }
 ]
 
-//get stored values for high scores
-function renderInitials() {
-       // Set Item
-       localStorage.setItem("initials", initials);
-       // Retrieve
-       scoreResults.textContent = localStorage.getItem("initials")
-}
-
-submitButton.addEventListener("click", renderInitials)
 // var projectName = projectNameInputEl.val().trim();
     // var projectType = projectTypeInputEl.val(); // don't need to trim select input
     // var projectDate = projectDateInputEl.val();
